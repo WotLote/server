@@ -70,6 +70,9 @@ app.post('/auth', function(req, res){
 	})
 })
 
+app.get('/', (req, res) => {
+	res.sendFile(index);
+})
 
 io.on('connection', (socket) => {
 	var handshakeData = socket.request;
