@@ -5,11 +5,12 @@ const express = require('express'),
 	path = require('path')
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
-const config = require('./config.js')();
 
-server.listen(config.port, function(){
-	console.log('\x1b[36m%s\x1b[0m','Started server for 3000');
-});
+const PORT = process.env.PORT || 5000
+
+
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 var io = require('socket.io')(server);
@@ -26,10 +27,10 @@ console.log(config)
 const secret = 'ggwp'
 
 const connect = mysql.createConnection({
-	host: config.host,
-	user: config.user,
-	password: config.password,
-	database: config.database
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'st'
 });
 
 getDateNow = () => {
