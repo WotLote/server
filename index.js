@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const PORT = process.env.PORT || 5000
 
 
-server.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -70,9 +70,7 @@ app.post('/auth', function(req, res){
 	})
 })
 
-app.get('/', (req, res) => {
-	res.sendFile(index);
-})
+app.get('/', (req, res) => res.sendFile(index))
 
 io.on('connection', (socket) => {
 	var handshakeData = socket.request;
@@ -1074,3 +1072,6 @@ io.on('connection', (socket) => {
 	})
 
 });
+
+
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`))
